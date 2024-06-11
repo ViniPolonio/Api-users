@@ -1,0 +1,584 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "HUB",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/User": {},
+        "/api/user?key=": {
+            "get": {
+                "tags": [
+                    "/User"
+                ],
+                "summary": "Returns all available users",
+                "operationId": "1041359fda7485c39fcc204add479dbc",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Return the all user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array will be sent with all the found users",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "user_id": {
+                                                "description": "User id, primary key",
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "description": "Name of the user",
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "description": "Email of the user registered",
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "description": "CPF of the user registered",
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "description": "Address of the user registered",
+                                                "type": "string"
+                                            },
+                                            "cep": {
+                                                "description": "Cep of the user registered",
+                                                "type": "string"
+                                            },
+                                            "date_birth": {
+                                                "description": "Date of birth",
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "status": {
+                                                "description": "Status: Active 1 | 0 Deactive",
+                                                "type": "integer"
+                                            },
+                                            "created_at": {
+                                                "description": "Date the user was created",
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "description": "Date the user was updated",
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error fetching the user"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "post": {
+                "tags": [
+                    "/User"
+                ],
+                "summary": "Create User",
+                "description": "Create a new user.",
+                "operationId": "54a5c67dc74ac150471ceefac5482a0b",
+                "requestBody": {
+                    "description": "User data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "cpf",
+                                    "address",
+                                    "cellphone",
+                                    "cep",
+                                    "date_birth",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "description": "User's email",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "john@example.com"
+                                    },
+                                    "cpf": {
+                                        "description": "User's CPF",
+                                        "type": "string",
+                                        "example": "123.456.789-00"
+                                    },
+                                    "address": {
+                                        "description": "User's address",
+                                        "type": "string",
+                                        "example": "123 Main St, City"
+                                    },
+                                    "cellphone": {
+                                        "description": "User's cellphone number",
+                                        "type": "string",
+                                        "example": "1234567890"
+                                    },
+                                    "cep": {
+                                        "description": "User's ZIP code",
+                                        "type": "string",
+                                        "example": "12345-678"
+                                    },
+                                    "date_birth": {
+                                        "description": "User's date of birth",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1990-01-01"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "Confirmation of user's password",
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user_id": {
+                                            "description": "User id, primary key",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Name of the user",
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "description": "Email of the user registered",
+                                            "type": "string"
+                                        },
+                                        "cpf": {
+                                            "description": "CPF of the user registered",
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "description": "Address of the user registered",
+                                            "type": "string"
+                                        },
+                                        "cep": {
+                                            "description": "Cep of the user registered",
+                                            "type": "string"
+                                        },
+                                        "date_birth": {
+                                            "description": "Date of birth",
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "status": {
+                                            "description": "Status: Active 1 | 0 Deactive",
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "description": "Date the user was created",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "description": "Date the user was updated",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation error message",
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "description": "Validation errors details",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/{id}": {
+            "get": {
+                "tags": [
+                    "/User"
+                ],
+                "summary": "Get User by ID",
+                "description": "Returns a single user by ID.",
+                "operationId": "858a1690e8df9b14a4b9c0da1f326c52",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user_id": {
+                                            "description": "User id, primary key",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Name of the user",
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "description": "Email of the user registered",
+                                            "type": "string"
+                                        },
+                                        "cpf": {
+                                            "description": "CPF of the user registered",
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "description": "Address of the user registered",
+                                            "type": "string"
+                                        },
+                                        "cep": {
+                                            "description": "Cep of the user registered",
+                                            "type": "string"
+                                        },
+                                        "date_birth": {
+                                            "description": "Date of birth",
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "status": {
+                                            "description": "Status: Active 1 | 0 Deactive",
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "description": "Date the user was created",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "description": "Date the user was updated",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "User not found message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "/User"
+                ],
+                "summary": "Update User by ID",
+                "description": "Update an existing user by ID.",
+                "operationId": "4e939975843b477f2d5c3f7f954bae85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "User data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "cpf",
+                                    "address",
+                                    "cellphone",
+                                    "cep"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "description": "User's email",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "john@example.com"
+                                    },
+                                    "cpf": {
+                                        "description": "User's CPF",
+                                        "type": "string",
+                                        "example": "123.456.789-00"
+                                    },
+                                    "address": {
+                                        "description": "User's address",
+                                        "type": "string",
+                                        "example": "123 Main St, City"
+                                    },
+                                    "cellphone": {
+                                        "description": "User's cellphone number",
+                                        "type": "string",
+                                        "example": "1234567890"
+                                    },
+                                    "cep": {
+                                        "description": "User's ZIP code",
+                                        "type": "string",
+                                        "example": "12345-678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Success message",
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "description": "Updated user's ID",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation error message",
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "description": "Validation errors details",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "User not found message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "/User"
+                ],
+                "summary": "Delete User by ID",
+                "description": "Delete an existing user by ID (soft delete).",
+                "operationId": "84d7b8d633da1f16207f2bd442474e79",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Success message",
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "description": "Deleted user's ID",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "User not found message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
